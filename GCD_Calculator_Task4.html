@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GCD Calculator</title>
+</head>
+<body>
+    <h1> Greatest Common Divisor Calculator</h1>
+    <p>Enter two numbers to find their Greatest Common Divisor (GCD):</p>
+    
+    <form id="gcdForm">
+        <label for="num1">Number 1:</label>
+        <input type="number" id="num1" required>
+        <br>
+        <label for="num2">Number 2:</label>
+        <input type="number" id="num2" required>
+        <br>
+        <button type="button" onclick="calculateGCD()">Calculate GCD</button>
+    </form>
+    
+    <p id="result"></p>
+    
+    <script>
+        function findGCD(a, b) {
+            while (b !== 0) {
+                let temp = b;
+                b = a % b;
+                a = temp;
+            }
+            return a;
+        }
+
+        function calculateGCD() {
+            let num1 = parseFloat(document.getElementById("num1").value);
+            let num2 = parseFloat(document.getElementById("num2").value);
+            let resultElement = document.getElementById("result");
+            let gcd = findGCD(num1, num2);
+            resultElement.textContent = `The GCD of ${num1} and ${num2} is ${gcd}`;
+            }
+        
+    </script>
+</body>
+</html>
